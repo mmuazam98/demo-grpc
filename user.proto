@@ -1,0 +1,58 @@
+syntax = "proto3"; 
+option go_package = "github.com/mmuazam98/demo-grpc/user"; 
+
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  string phone = 4;
+  string address = 5;
+}
+
+message CreateUserRequest {
+  string name = 1;
+  string email = 2;
+  string phone = 3;
+  string address = 4;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message GetUserRequest {
+  int32 id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message UpdateUserRequest {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  string phone = 4;
+  string address = 5;
+}
+
+message UpdateUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  int32 id = 1;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+}
+
+// User service definition
+service UserService {
+  // define endpoints or rpc methods
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
